@@ -1,0 +1,35 @@
+open Reader;;
+open Tag_Parser;;
+open Semantic_Analysis;;
+open Code_Generation;;
+
+let str = "(define x '(a b c)) (define y `(1 2 ,x)) (set! x 3) y";;
+let show = (Semantic_Analysis.semantics(Tag_Parser.tag_parse (PC.star Reader.nt_sexpr str 0).found));;
+Code_Generation.make_constants_table [show];;
+Code_Generation.make_free_vars_table [show];;
+
+
+let str = "(letrecZ . (((a (lambdaZ (x . (y)) . (a x))) . ((c `,(d)))) . (ifZ (a (andZ) 'a) `(,@c . (a a)) #;'''else ))))";;
+let str = "
+(define a 0)
+(define d #t)
+ (define e4 ((lambda (x) (or x a))((lambda () (and (zero? a) d)))))
+	";;
+
+let str = "
+(define fact 
+    (letrec ((f (lambda (n) 
+                  (if (__bin-equal-qq 0 n) 
+                      1
+                      (__bin-mul-qq n (f (__bin-sub-qq n 1)))))))
+            f))
+(fact 5)";;
+let sexprs = PC.star Reader.nt_sexpr str 0;;
+let exprs = List.map Tag_Parser.tag_parse sexprs.found;;
+let exprs' = List.map Semantic_Analysis.semantics exprs;;
+
+
+
+
+
+

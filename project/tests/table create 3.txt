@@ -1,0 +1,25 @@
+db T_rational	; 2
+	dq 2, 1
+	db T_pair	; (2)
+	dq L_constants + 512, L_constants + 1
+	db T_pair	; (1 2)
+	dq L_constants + 128, L_constants + 529
+	db T_rational	; 3
+	dq 3, 1
+	db T_rational	; 4
+	dq 4, 1
+	db T_pair	; (4)
+	dq L_constants + 580, L_constants + 1
+	db T_pair	; (3 4)
+	dq L_constants + 563, L_constants + 597
+	db T_rational	; 5
+	dq 5, 1
+	db T_rational	; 6
+	dq 6, 1
+	db T_pair	; (6)
+	dq L_constants + 648, L_constants + 1
+	db T_pair	; (5 6)
+	dq L_constants + 631, L_constants + 665
+	db T_vector	; #((1 2) (3 4) (5 6))
+	dq 3
+	dq L_constants + 546, L_constants + 614, L_constants + 682

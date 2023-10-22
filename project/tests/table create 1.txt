@@ -1,0 +1,66 @@
+utop[15]> Code_Generation.make_constants_table [(Semantic_Analysis.semantics(Tag_Parser.tag_parse (Reader.nt_sexpr "'#((1 2) (3 4) (5 6))" 0).found))];;
+- : (sexpr * int * Code_Generation.initialized_data list) list =
+[(ScmVoid, 0, [Code_Generation.RTTI "T_void"]);
+ (ScmNil, 1, [Code_Generation.RTTI "T_nil"]);
+ (ScmBoolean false, 2, [Code_Generation.RTTI "T_boolean_false"]);
+ (ScmBoolean true, 3, [Code_Generation.RTTI "T_boolean_true"]);
+ (ScmChar '\000', 4, [Code_Generation.RTTI "T_char"; Code_Generation.Byte 0]);
+ (ScmNumber (ScmRational (1, 1)), 6,
+  [Code_Generation.RTTI "T_rational"; Code_Generation.Quad 1;
+   Code_Generation.Quad 1]);
+ (ScmNumber (ScmRational (2, 1)), 23,
+  [Code_Generation.RTTI "T_rational"; Code_Generation.Quad 2;
+   Code_Generation.Quad 1]);
+ (ScmPair (ScmNumber (ScmRational (2, 1)), ScmNil), 40,
+  [Code_Generation.RTTI "T_pair"; Code_Generation.ConstPtr 23;
+   Code_Generation.ConstPtr 1]);
+ (ScmPair
+   (ScmNumber (ScmRational (1, 1)),
+    ScmPair (ScmNumber (ScmRational (2, 1)), ScmNil)),
+  57,
+  [Code_Generation.RTTI "T_pair"; Code_Generation.ConstPtr 6;
+   Code_Generation.ConstPtr 40]);
+ (ScmNumber (ScmRational (3, 1)), 74,
+  [Code_Generation.RTTI "T_rational"; Code_Generation.Quad 3;
+   Code_Generation.Quad 1]);
+ (ScmNumber (ScmRational (4, 1)), 91,
+  [Code_Generation.RTTI "T_rational"; Code_Generation.Quad 4;
+   Code_Generation.Quad 1]);
+ (ScmPair (ScmNumber (ScmRational (4, 1)), ScmNil), 108,
+  [Code_Generation.RTTI "T_pair"; Code_Generation.ConstPtr 91;
+   Code_Generation.ConstPtr 1]);
+ (ScmPair
+   (ScmNumber (ScmRational (3, 1)),
+    ScmPair (ScmNumber (ScmRational (4, 1)), ScmNil)),
+  125,
+  [Code_Generation.RTTI "T_pair"; Code_Generation.ConstPtr 74;
+   Code_Generation.ConstPtr 108]);
+ (ScmNumber (ScmRational (5, 1)), 142,
+  [Code_Generation.RTTI "T_rational"; Code_Generation.Quad 5;
+   Code_Generation.Quad 1]);
+ (ScmNumber (ScmRational (6, 1)), 159,
+  [Code_Generation.RTTI "T_rational"; Code_Generation.Quad 6;
+   Code_Generation.Quad 1]);
+ (ScmPair (ScmNumber (ScmRational (6, 1)), ScmNil), 176,
+  [Code_Generation.RTTI "T_pair"; Code_Generation.ConstPtr 159;
+   Code_Generation.ConstPtr 1]);
+ (ScmPair
+   (ScmNumber (ScmRational (5, 1)),
+    ScmPair (ScmNumber (ScmRational (6, 1)), ScmNil)),
+  193,
+  [Code_Generation.RTTI "T_pair"; Code_Generation.ConstPtr 142;
+   Code_Generation.ConstPtr 176]);
+ (ScmVector
+   [ScmPair
+     (ScmNumber (ScmRational (1, 1)),
+      ScmPair (ScmNumber (ScmRational (2, 1)), ScmNil));
+    ScmPair
+     (ScmNumber (ScmRational (3, 1)),
+      ScmPair (ScmNumber (ScmRational (4, 1)), ScmNil));
+    ScmPair
+     (ScmNumber (ScmRational (5, 1)),
+      ScmPair (ScmNumber (ScmRational (6, 1)), ScmNil))],
+  210,
+  [Code_Generation.RTTI "T_vector"; Code_Generation.Quad 3;
+   Code_Generation.ConstPtr 57; Code_Generation.ConstPtr 125;
+   Code_Generation.ConstPtr 193])]

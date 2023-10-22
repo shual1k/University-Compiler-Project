@@ -1,0 +1,4 @@
+utop[18]> Printf.printf "\n\n%a\n\n" print_sexprs (remove_duplicates (Code_Generation.add_sub_constants (remove_duplicates (Code_Generation.collect_constants [(Semantic_Analysis.semantics(Tag_Parser.tag_parse (Reader.nt_sexpr "'#((1 2) (3 4) (5 6))" 0).found))]))));;
+
+
+[#<void>; (); #f; #t; #\nul; 1; 2; (2); (1 2); 3; 4; (4); (3 4); 5; 6; (6); (5 6); #((1 2) (3 4) (5 6))]

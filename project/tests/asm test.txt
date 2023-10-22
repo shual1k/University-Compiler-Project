@@ -1,0 +1,17 @@
+install gdb
+install nasm
+mv gdbinit-for-students ~/.gdbinit
+
+
+
+write int3 at the asm for a break point, then make
+open terminal at the file where goo is:
+
+gdb
+file goo
+b <lable>
+run goo
+asm
+ssi
+x/16xg $sp
+x/16xw $sp
